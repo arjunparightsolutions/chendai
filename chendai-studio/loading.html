@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChendAI Studio - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            text-align: center;
+            max-width: 500px;
+            padding: 40px;
+        }
+
+        .logo {
+            font-size: 72px;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .version {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .status {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+            min-height: 24px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            width: 0%;
+            animation: progress 15s linear forwards;
+        }
+
+        .tip {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes progress {
+            to {
+                width: 100%;
+            }
+        }
+
+        .error {
+            color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-container">
+        <div class="logo">🥁</div>
+        <h1>ChendAI Studio</h1>
+        <div class="version">Pro v2.0</div>
+
+        <div class="spinner"></div>
+
+        <div class="status" id="status">Initializing audio engine...</div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <div class="tip">
+            💡 Tip: Use Natural Language Mode to describe any traditional Kerala music pattern
+        </div>
+
+        <div class="error" id="error">
+            <strong>Startup Error</strong><br>
+            <span id="error-message"></span>
+        </div>
+    </div>
+
+    <script>
+        const statuses = [
+            "Initializing audio engine...",
+            "Loading synthesis modules...",
+            "Preparing 6-player ensemble...",
+            "Calibrating material physics...",
+            "Connecting to AI composer...",
+            "Almost ready..."
+        ];
+
+        let currentStatus = 0;
+
+        const statusInterval = setInterval(() => {
+            currentStatus = (currentStatus + 1) % statuses.length;
+            document.getElementById('status').textContent = statuses[currentStatus];
+        }, 2500);
+
+        // Listen for timeout (15 seconds)
+        setTimeout(() => {
+            clearInterval(statusInterval);
+            document.getElementById('status').textContent = "Taking longer than usual...";
+        }, 10000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+
+.env
+__pycache__/
+dist/
+build/
+*.spec
+output/
+gh.exe
+gh.zip
+gh/
+node_modules/

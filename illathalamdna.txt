@@ -1,0 +1,36 @@
+# RIGHT SOLUTIONS A.I. - ILLATHALAM (CYMBAL) SYNTHESIS MAP
+# FORMAT: [ID] | [TYPE] | [BASE_FREQ_HZ] | [INHARMONIC_RATIOS] | [DECAY_SEC] | [NOISE_MIX_AMT] | [PHASE_OFFSET]
+# NOTE: Inharmonic Ratios are random/prime multipliers to create "Metallic" sound.
+# NOTE: Phase Offset (0-180) simulates the two cymbals not hitting perfectly flat.
+
+# --- SECTION 1: THE OPEN STRIKE (RINGING) ---
+# Used for the main beat, allowing the cymbals to vibrate freely.
+
+ILA_OPEN_LOUD     | METAL_RING   | 1800.0 | 1.45, 1.78, 2.55, 3.14, 5.8 | 2.50 | 0.30 | 10
+ILA_OPEN_MED      | METAL_RING   | 1750.0 | 1.45, 1.78, 2.55, 3.14      | 1.80 | 0.25 | 8
+ILA_OPEN_SOFT     | METAL_RING   | 1700.0 | 1.45, 1.78, 2.55            | 1.20 | 0.20 | 5
+
+# --- SECTION 2: THE CLOSED STRIKE (MUTED) ---
+# The "Chk" sound. The player presses the cymbals together immediately after impact.
+# CRITICAL: High noise floor required here to simulate the "crunch".
+
+ILA_CLOSE_HARD    | METAL_CRUNCH | 1200.0 | 1.23, 1.67, 2.10            | 0.15 | 0.85 | 45
+ILA_CLOSE_FAST    | METAL_CRUNCH | 1250.0 | 1.23, 1.67                  | 0.08 | 0.75 | 30
+ILA_CLOSE_GHOST   | METAL_CRUNCH | 1300.0 | 1.23                        | 0.05 | 0.60 | 20
+
+# --- SECTION 3: THE EDGE/RIM STRIKE ---
+# Hitting the edge of one cymbal against the face of the other. piercing and high.
+
+ILA_EDGE_SHARP    | PIERCING     | 3500.0 | 1.80, 2.90, 6.50, 8.20      | 1.50 | 0.10 | 0
+ILA_EDGE_LIGHT    | PIERCING     | 3400.0 | 1.80, 2.90                  | 0.90 | 0.05 | 0
+
+# --- SECTION 4: FRICTION & SLIDE ---
+# Rubbing the two faces together (common in slow Kathakali padams).
+
+ILA_SLIDE_LONG    | FRICTION     | 900.0  | RANDOM_CLUSTER              | 0.60 | 0.95 | 180
+ILA_SLIDE_SHORT   | FRICTION     | 950.0  | RANDOM_CLUSTER              | 0.30 | 0.90 | 120
+
+# --- SECTION 5: AIR & BODY ---
+# The low "clunk" of the heavy bronze weight moving (sub-frequency).
+
+ILA_BODY_THUD     | IMPACT       | 350.0  | NO_HARMONICS                | 0.10 | 0.00 | 0

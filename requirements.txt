@@ -1,0 +1,24 @@
+# ChendAI Studio - Production Requirements
+
+# GUI Framework
+PyQt5>=5.15.11
+PyQtGraph>=0.14.0
+
+# Audio Processing & Synthesis
+numpy>=1.24.0
+scipy>=1.10.0
+librosa>=0.10.0
+soundfile>=0.12.1
+
+# Audio Playback
+pygame>=2.5.0
+
+# AI & API
+openai>=1.0.0
+python-dotenv>=1.0.0
+
+# Optional: Audio Export
+pydub>=0.25.1
+
+# Optional: Advanced Audio Processing
+pedalboard>=0.9.0

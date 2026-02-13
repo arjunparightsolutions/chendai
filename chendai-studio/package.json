@@ -1,0 +1,66 @@
+{
+  "name": "chendai-studio",
+  "version": "1.0.0",
+  "description": "Professional DAW for Chendamelam Music Production",
+  "main": "electron.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently --kill-others \"vite --port 5173\" \"wait-on http://localhost:5173 && npx electron .\"",
+    "dev:react": "vite --port 5173",
+    "dev:electron": "wait-on http://localhost:5173 && npx electron .",
+    "build": "vite build && electron-builder",
+    "build:win": "vite build && electron-builder --win"
+  },
+  "keywords": [
+    "chendamelam",
+    "music",
+    "daw",
+    "kerala"
+  ],
+  "author": "ChendAI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.24",
+    "concurrently": "^8.2.2",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.8",
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.33.0",
+    "lucide-react": "^0.563.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^3.4.0",
+    "wavesurfer.js": "^7.5.0",
+    "zustand": "^4.4.7"
+  },
+  "build": {
+    "appId": "com.chendai.studio",
+    "productName": "ChendAI Studio",
+    "directories": {
+      "output": "dist"
+    },
+    "extraResources": [
+      {
+        "from": "../dist/chendai_engine",
+        "to": "chendai_engine"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
